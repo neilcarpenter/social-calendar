@@ -1,17 +1,17 @@
 {
-  "name"        : "neil_node_app",
+  "name"        : "social-calendar",
   "version"     : "0.0.0",
-  "description" : "",
+  "description" : "Node / d3 social activity visualisation",
   "directories" : {},
   "scripts"     : {},
   "repository"  : {
     "type" : "git",
-    "url"  : "tbc"
+    "url"  : "https://github.com/neilcarpenter/social-calendar"
   },
-  "author": "",
+  "author": "Neil Carpenter <neilanthonycarpenter@gmail.com> (http://neilcarpenter.com/)",
   "license": "MIT",
   "bugs": {
-    "url": "tbc"
+    "url": "https://github.com/neilcarpenter/social-calendar/issues"
   },
   "dependencies": {
     "express"          : "~4.1.2",
