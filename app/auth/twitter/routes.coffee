@@ -12,16 +12,28 @@ passport.use new TwitterStrategy {
 	consumerKey    : creds.twitter.consumer_key
 	consumerSecret : creds.twitter.consumer_secret
 	callbackURL    : "#{config.BASE_PATH}/auth/twitter/callback"
-  }, (token, tokenSecret, profile, done) ->
-	console.log "authenticated likea bawse"
-	process.nextTick -> return done(null, profile)
+	},
+	(token, tokenSecret, profile, done) ->
+
+		session.twitterToken       = token
+		session.twitterTokenSecret = tokenSecret
+
+		process.nextTick -> return done(null, profile)
 
 auth         = passport.authenticate('twitter')
-authCallback = passport.authenticate('twitter', { successRedirect: '/test', failureRedirect: '/error' })
+authCallback = passport.authenticate('twitter', { successRedirect: '/auth/twitter/renderCallback', failureRedirect: '/error' })
 
-test = (req, res) ->
-	console.log req.user
-	res.render "site/error"
+renderCallback = (req, res) ->
+	if req.user
+		data =
+			token       : session.twitterToken
+			tokenSecret : session.twitterTokenSecret
+			provider    : req.user.provider
+			name        : req.user.displayName
+			id          : req.user.id
+			avatar      : req.user.photos[0].value
+
+	res.render "auth/callback", data or {}
 
 setup = (app) ->
 	app.use cookieParser()
@@ -31,6 +43,6 @@ setup = (app) ->
 
 	app.get '/auth/twitter', auth
 	app.get '/auth/twitter/callback', authCallback
-	app.get '/test', test
+	app.get '/auth/twitter/renderCallback', renderCallback
 
 module.exports = setup
