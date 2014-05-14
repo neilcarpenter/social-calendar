@@ -8,12 +8,12 @@ app     = express()
 log = require("winston").loggers.get("app:server")
 
 app.set "views", __dirname
-#use whatever templating system(s) you like
 app.set "view engine", "jade"
 
 #See the README about ordering of middleware
 #Load the routes ("controllers" -ish)
 [
+	"app/auth/twitter/routes",
 	"app/api/twitter/routes",
 	"app/api/facebook/routes",
 	"app/site/routes"
@@ -32,4 +32,4 @@ app.listen config.express.port, config.express.ip, (error) ->
 		log.error("Unable to listen for connections", error)
 		process.exit(10)
 
-	log.info("express is listening on http://" + config.express.ip + ":" + config.express.port);
+	log.info("express is listening on " + config.BASE_PATH);

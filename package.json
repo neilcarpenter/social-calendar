@@ -1,12 +1,12 @@
 {
-  "name": "neil_node_app",
-  "version": "0.0.0",
-  "description": "",
-  "directories": {},
-  "scripts": {},
-  "repository": {
-    "type": "git",
-    "url": "tbc"
+  "name"        : "neil_node_app",
+  "version"     : "0.0.0",
+  "description" : "",
+  "directories" : {},
+  "scripts"     : {},
+  "repository"  : {
+    "type" : "git",
+    "url"  : "tbc"
   },
   "author": "",
   "license": "MIT",
@@ -14,8 +14,12 @@
     "url": "tbc"
   },
   "dependencies": {
-    "jade": "~1.3.1",
-    "express": "~4.1.2",
-    "winston": "~0.7.3"
+    "express"          : "~4.1.2",
+    "express-session"  : "~1.1.0",
+    "cookie-parser"    : "~1.0.1",
+    "jade"             : "~1.3.1",
+    "winston"          : "~0.7.3",
+    "passport"         : "~0.2.0",
+    "passport-twitter" : "~1.0.2"
   }
 }

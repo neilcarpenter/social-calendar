@@ -8,9 +8,13 @@ home = (req, res) ->
 about = (req, res) ->
 	res.render "site/about"
 
+error = (req, res) ->
+	res.render "site/error"
+
 setup = (app) ->
-	app.use(express.static(__dirname + "../www"))
+	app.use(express.static(__dirname + '../../public'))
 	app.get '/', home
 	app.get '/about', about
+	app.get '/error', error
 
 module.exports = setup
