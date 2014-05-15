@@ -2,12 +2,8 @@ creds      = require 'app/creds'
 bodyParser = require 'body-parser'
 FB         = require 'fb'
 
-FB.options
-	appId     : creds.facebook.client_id
-	appSecret : creds.facebook.client_secret
-
 ###
-@param token   = FB access token
+@param token
 ###
 getPosts = (req, res) ->
 
@@ -16,8 +12,6 @@ getPosts = (req, res) ->
 		access_token : req.body.token
 
 	FB.api 'me/feed', params, (result) ->
-		if !result or result.error
-			return res.send(500, 'error')
 		res.json posts : result
 
 setup = (app) ->

@@ -3,14 +3,10 @@ bodyParser = require 'body-parser'
 GitHubApi  = require 'github'
 
 github = new GitHubApi version: "3.0.0"
-github.authenticate
-	type   : "oauth"
-	key    : creds.github.client_id
-	secret : creds.github.client_secret
 
 ###
-@param token = access token
-@param user  = str username to get activity for
+@param token
+@param user
 ###
 getUserEvents = (req, res) ->
 
@@ -18,8 +14,8 @@ getUserEvents = (req, res) ->
 		type  : "oauth"
 		token : req.body.token
 
-	github.events.getFromUser { user: req.body.user }, (errGh, resGh) ->
-		res.json events : resGh
+	github.events.getFromUser { user: req.body.user }, (err, events) ->
+		res.json events : events
 
 setup = (app) ->
 	app.use bodyParser()
