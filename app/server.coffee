@@ -14,6 +14,7 @@ app.set "view engine", "jade"
 #Load the routes ("controllers" -ish)
 [
 	"app/auth/twitter/routes",
+	"app/auth/facebook/routes",
 	"app/api/twitter/routes",
 	"app/api/facebook/routes",
 	"app/site/routes"
