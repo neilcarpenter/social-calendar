@@ -17,9 +17,11 @@ app.use(express.static(__dirname + '/public'))
 	"app/auth/twitter/routes",
 	"app/auth/facebook/routes",
 	"app/auth/instagram/routes",
+	"app/auth/github/routes",
 	"app/api/twitter/routes",
 	"app/api/facebook/routes",
 	"app/api/instagram/routes",
+	"app/api/github/routes",
 	"app/site/routes"
 ].forEach (routePath) ->
 	require(routePath)(app)

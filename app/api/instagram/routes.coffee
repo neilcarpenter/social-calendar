@@ -4,7 +4,7 @@ ig         = require('instagram-node').instagram()
 
 ig.use
 	client_id     : creds.instagram.client_id
-	client_secret : creds.facebook.client_secret
+	client_secret : creds.instagram.client_secret
 
 ###
 @param token   = IG access token
