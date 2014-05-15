@@ -1,11 +1,14 @@
 creds      = require 'app/creds'
-FB         = require 'fb'
 bodyParser = require 'body-parser'
+FB         = require 'fb'
 
 FB.options
 	appId     : creds.facebook.client_id
 	appSecret : creds.facebook.client_secret
 
+###
+@param token   = FB access token
+###
 getPosts = (req, res) ->
 
 	params =
