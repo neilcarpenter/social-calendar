@@ -21,7 +21,7 @@ passport.use new TwitterStrategy {
 		process.nextTick -> return done(null, profile)
 
 auth         = passport.authenticate('twitter')
-authCallback = passport.authenticate('twitter', { successRedirect: '/auth/twitter/renderCallback', failureRedirect: '/error' })
+authCallback = passport.authenticate('twitter', { successRedirect: '/auth/twitter/callback/done', failureRedirect: '/auth/twitter/error' })
 
 renderCallback = (req, res) ->
 	if req.user
@@ -35,6 +35,9 @@ renderCallback = (req, res) ->
 
 	res.render "auth/callback", data or {}
 
+error = (req, res) ->
+	res.render "errors/authError"
+
 setup = (app) ->
 	app.use cookieParser()
 	app.use session({ secret: 'what up' })
@@ -43,6 +46,7 @@ setup = (app) ->
 
 	app.get '/auth/twitter', auth
 	app.get '/auth/twitter/callback', authCallback
-	app.get '/auth/twitter/renderCallback', renderCallback
+	app.get '/auth/twitter/callback/done', renderCallback
+	app.get '/auth/twitter/error', error
 
 module.exports = setup

@@ -20,7 +20,7 @@ passport.use new FacebookStrategy {
 		process.nextTick -> return done(null, profile)
 
 auth         = passport.authenticate('facebook', { scope: 'read_stream' })
-authCallback = passport.authenticate('facebook', { successRedirect: '/auth/facebook/renderCallback', failureRedirect: '/error' })
+authCallback = passport.authenticate('facebook', { successRedirect: '/auth/facebook/callback/done', failureRedirect: '/auth/facebook/error' })
 
 renderCallback = (req, res) ->
 	if req.user
@@ -32,6 +32,9 @@ renderCallback = (req, res) ->
 
 	res.render "auth/callback", data or {}
 
+error = (req, res) ->
+	res.render "errors/authError"
+
 setup = (app) ->
 	app.use cookieParser()
 	app.use session({ secret: 'what up' })
@@ -40,6 +43,7 @@ setup = (app) ->
 
 	app.get '/auth/facebook', auth
 	app.get '/auth/facebook/callback', authCallback
-	app.get '/auth/facebook/renderCallback', renderCallback
+	app.get '/auth/facebook/callback/done', renderCallback
+	app.get '/auth/facebook/error', error
 
 module.exports = setup
