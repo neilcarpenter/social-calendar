@@ -1,4 +1,3 @@
-creds      = require 'app/creds'
 bodyParser = require 'body-parser'
 GitHubApi  = require 'github'
 

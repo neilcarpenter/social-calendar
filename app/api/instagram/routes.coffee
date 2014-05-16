@@ -1,4 +1,3 @@
-creds      = require 'app/creds'
 bodyParser = require 'body-parser'
 ig         = require('instagram-node').instagram()
 

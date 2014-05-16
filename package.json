@@ -26,10 +26,12 @@
     "passport-instagram"  : "~0.1.2",
     "passport-github"     : "~0.1.5",
     "passport-foursquare" : "~1.0.0",
+    "passport-flickr"     : "~0.2.0",
     "twitter"             : "~0.2.9",
     "fb"                  : "~0.7.0",
     "instagram-node"      : "~0.3.0",
     "github"              : "~0.1.16",
-    "node-4sq"            : "~0.1.7"
+    "node-4sq"            : "~0.1.7",
+    "flickrapi"           : "~0.3.21"
   }
 }

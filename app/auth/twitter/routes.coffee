@@ -9,8 +9,8 @@ passport.serializeUser (user, done) -> done(null, user)
 passport.deserializeUser (obj, done) -> done(null, obj)
 
 passport.use new TwitterStrategy {
-	consumerKey    : creds.twitter.consumer_key
-	consumerSecret : creds.twitter.consumer_secret
+	consumerKey    : creds.twitter.client_id
+	consumerSecret : creds.twitter.client_secret
 	callbackURL    : "#{config.BASE_PATH}/auth/twitter/callback"
 	},
 	(token, tokenSecret, profile, done) ->
