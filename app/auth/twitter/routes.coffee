@@ -1,5 +1,5 @@
-config          = require "app/config"
-creds           = require "app/creds"
+config          = require "../../config"
+creds           = require "../../creds"
 cookieParser    = require "cookie-parser"
 session         = require "express-session"
 passport        = require "passport"

@@ -1,9 +1,9 @@
-#Here's a set of routes for the full HTML pages on our site
-express     = require 'express'
-contentHome = require 'app/content/home.json'
+# Here's a set of routes for the full HTML pages on our site
+express = require 'express'
+content = require '../content/all.json'
 
 home = (req, res) ->
-	res.render "site/home", contentHome
+	res.render "site/home", content.home
 
 about = (req, res) ->
 	res.render "site/about"

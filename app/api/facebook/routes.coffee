@@ -1,4 +1,4 @@
-creds      = require 'app/creds'
+creds      = require '../../creds'
 bodyParser = require 'body-parser'
 FB         = require 'fb'
 

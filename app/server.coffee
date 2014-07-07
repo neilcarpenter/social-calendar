@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-config  = require "app/config"
+config  = require "./config"
 express = require "express"
 app     = express()
 
@@ -14,24 +14,24 @@ app.use(express.static(__dirname + '/public'))
 #See the README about ordering of middleware
 #Load the routes ("controllers" -ish)
 [
-	"app/auth/twitter/routes",
-	"app/auth/facebook/routes",
-	"app/auth/instagram/routes",
-	"app/auth/github/routes",
-	"app/auth/foursquare/routes",
-	"app/auth/flickr/routes",
-	"app/api/twitter/routes",
-	"app/api/facebook/routes",
-	"app/api/instagram/routes",
-	"app/api/github/routes",
-	"app/api/foursquare/routes",
-	"app/api/flickr/routes",
-	"app/site/routes"
+	"./auth/twitter/routes",
+	"./auth/facebook/routes",
+	"./auth/instagram/routes",
+	"./auth/github/routes",
+	"./auth/foursquare/routes",
+	"./auth/flickr/routes",
+	"./api/twitter/routes",
+	"./api/facebook/routes",
+	"./api/instagram/routes",
+	"./api/github/routes",
+	"./api/foursquare/routes",
+	"./api/flickr/routes",
+	"./site/routes"
 ].forEach (routePath) ->
 	require(routePath)(app)
 
 #FINALLY, use any error handlers
-app.use require("app/middleware").notFound
+app.use require("./middleware").notFound
 
 #Note that there's not much logic in this file.
 #The server should be mostly "glue" code to set things up and

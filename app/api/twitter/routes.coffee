@@ -1,4 +1,4 @@
-creds      = require 'app/creds'
+creds      = require '../../creds'
 twitter    = require 'twitter'
 bodyParser = require 'body-parser'
 
@@ -10,8 +10,8 @@ getTweets = (req, res) ->
 		include_entities : true
 
 	twit = new twitter
-		consumer_key        : creds.twitter.consumer_key
-		consumer_secret     : creds.twitter.consumer_secret
+		consumer_key        : creds.twitter.client_id
+		consumer_secret     : creds.twitter.client_secret
 		access_token_key    : req.body.token
 		access_token_secret : req.body.tokenSecret
 

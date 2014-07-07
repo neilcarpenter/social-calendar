@@ -1,5 +1,5 @@
-config     = require "app/config"
-creds      = require 'app/creds'
+config     = require "../../config"
+creds      = require '../../creds'
 bodyParser = require 'body-parser'
 
 config =
